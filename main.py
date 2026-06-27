@@ -9,11 +9,12 @@ WIDTH, HEIGHT = 1000, 800  # Will be overridden by track image size
 FPS = 60
 
 # Starting position (adjust these based on your track's start line)
-START_X = 200
-START_Y = 650
+START_X = 400
+START_Y = 400
 START_ANGLE = 90  # Pointing to the right
 
 def main():
+    global START_X, START_Y
     pygame.init()
     
     # Setup track files
@@ -48,8 +49,8 @@ def main():
     mask_surface.set_colorkey((0, 0, 0)) # Make black transparent, so white is solid
     track_mask = pygame.mask.from_surface(mask_surface)
     
-    # Initialize car
-    car = Car(START_X, START_Y, width=15, height=30)
+    # Initialize car (smaller size as requested)
+    car = Car(START_X, START_Y, width=10, height=20)
     car.angle = START_ANGLE
     
     clock = pygame.time.Clock()
@@ -64,6 +65,10 @@ def main():
                 running = False
             # Reset on spacebar
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                car.reset(START_X, START_Y, START_ANGLE)
+            # Allow clicking to set a new spawn point
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                START_X, START_Y = event.pos
                 car.reset(START_X, START_Y, START_ANGLE)
                 
         # Input handling
