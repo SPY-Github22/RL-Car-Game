@@ -18,8 +18,8 @@ def main():
     pygame.init()
     
     # Setup track files
-    track_path = "track.png"
-    mask_path = "track_mask.png"
+    track_path = "track2.png"
+    mask_path = "track2_mask.png"
     
     if not os.path.exists(track_path):
         print(f"Error: {track_path} not found!")
