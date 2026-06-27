@@ -9,8 +9,8 @@ WIDTH, HEIGHT = 1000, 800  # Will be overridden by track image size
 FPS = 60
 
 # Starting position (adjust these based on your track's start line)
-START_X = 400
-START_Y = 400
+START_X = 150
+START_Y = 650
 START_ANGLE = 90  # Pointing to the right
 
 def main():
